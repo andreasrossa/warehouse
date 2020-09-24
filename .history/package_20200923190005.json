@@ -1,0 +1,10 @@
+{
+  "name": "TypescriptToLua",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.0.3",
+    "typescript-to-lua": "^0.35.0"
+  }
+}

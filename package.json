@@ -1,0 +1,19 @@
+{
+  "name": "TypescriptToLua",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@opct/gui": "^0.0.6",
+    "@opct/mineos": "^0.0.2",
+    "@opct/openos": "^0.0.15"
+  },
+  "scripts": {
+    "build": "tstl",
+    "dev": "tstl --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3",
+    "typescript-to-lua": "^0.35.0"
+  }
+}

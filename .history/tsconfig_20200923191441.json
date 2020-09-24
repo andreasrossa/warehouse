@@ -1,0 +1,21 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "outDir": "build",
+        "module": "commonjs",
+        "lib": ["esnext"],
+        "strict": true,
+        "moduleResolution": "node",
+        "rootDir": "src",
+        "types": [
+            "lua-types/jit",
+            "@opct/openos",
+            "@opct/gui",
+            "@opct/mineos"
+        ]
+    },
+    "tstl": {
+        "luaTarget": "JIT"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "lib": ["esnext"],
+      "moduleResolution": "node",
+      "types": [],
+      "strict": true,
+      "outDir": "./build"
+    },
+    "include": ["./src/*.ts"],
+    "tstl": {
+      "luaTarget": "JIT"
+    },
+    
+  }
