@@ -246,14 +246,13 @@ function ____exports.nodeGraphFromPositions(self, nodePositions)
     local graph = __TS__New(Map)
     __TS__ArrayForEach(
         {
-            __TS__Spread(graph)
+            __TS__Spread(nodePositions)
         },
         function(____, ____bindingPattern0)
             local id = ____bindingPattern0[1]
-            local n = ____bindingPattern0[2]
-            local pos = n.pos
-            local neighbours = ____exports.getNeighbours(nil, pos, nodePositions)
-            graph:set(id, {neighbours = neighbours, pos = pos})
+            local p = ____bindingPattern0[2]
+            local neighbours = ____exports.getNeighbours(nil, p, nodePositions)
+            graph:set(id, {neighbours = neighbours, pos = p})
         end
     )
     return graph
@@ -306,53 +305,36 @@ function ____exports.cost(self, a, b, graph)
     )
 end
 function ____exports.russianMan(self, start, ____end, graph)
-    local finished = __TS__New(Set)
+    local finished = {}
     local costs = __TS__New(Map)
     local paths = __TS__New(Map)
     costs:set(start, 0)
     paths:set(start, {start})
-    while true do
-        local cheapestCost = math.min(
-            table.unpack(
-                __TS__ArrayMap(
-                    __TS__ArrayFilter(
-                        {
-                            __TS__Spread(costs)
-                        },
-                        function(____, ____bindingPattern0)
-                            local id = ____bindingPattern0[1]
-                            local n = ____bindingPattern0[2]
-                            return not finished:has(id)
-                        end
-                    ),
-                    function(____, ____bindingPattern0)
-                        local id = ____bindingPattern0[1]
-                        local c = ____bindingPattern0[2]
-                        return c
-                    end
-                )
-            )
-        )
-        if cheapestCost == nil then
+    local runs = 0
+    while runs < 20 do
+        local ____ = 0
+        local cheapestCostEntry = __TS__ArraySort(
+            __TS__ArrayFilter(
+                {
+                    __TS__Spread(costs)
+                },
+                function(____, ____bindingPattern0)
+                    local n = ____bindingPattern0[1]
+                    local c = ____bindingPattern0[2]
+                    return __TS__ArrayIncludes(finished, n) == false
+                end
+            ),
+            function(____, a, b) return b[2] - a[2] end
+        )[1]
+        if (cheapestCostEntry == nil) or (cheapestCostEntry == nil) then
             break
         end
-        local current = __TS__ArrayFind(
-            {
-                __TS__Spread(costs)
-            },
-            function(____, ____bindingPattern0)
-                local id = ____bindingPattern0[1]
-                local c = ____bindingPattern0[2]
-                return c == cheapestCost
-            end
-        )[1]
+        local cheapestCost = cheapestCostEntry[1]
+        local current = cheapestCost
         if current == ____end then
             return paths:get(____end)
         end
         local n = graph:get(current).neighbours
-        if (n == nil) or (#n == 0) then
-            error("Seperate Nodes")
-        end
         __TS__ArrayForEach(
             n,
             function(____, id)
@@ -382,7 +364,8 @@ function ____exports.russianMan(self, start, ____end, graph)
                 end
             end
         )
-        finished:add(current)
+        runs = runs + 1
+        __TS__ArrayPush(finished, current)
     end
     return nil
 end

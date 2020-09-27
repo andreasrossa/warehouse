@@ -291,46 +291,43 @@ export function nodeGraphFromPositions(
 ): NodeGraph {
     const graph: NodeGraph = new Map();
 
-    [...nodePositions].forEach(([id, p]) => {
-        const neighbours = getNeighbours(p, nodePositions);
-        graph.set(id, { neighbours: neighbours, pos: p });
+    [...graph].forEach(([id, n]) => {
+        const pos = n.pos;
+        const neighbours = getNeighbours(pos, nodePositions);
+        graph.set(id, { neighbours: neighbours, pos: pos });
     });
 
     return graph;
 }
 
 export function reduceGraph(graph: NodeGraph): NodeGraph {
-    const reduced: NodeGraph = new Map(graph);
-    let nonReducedCount = 0;
-    while (nonReducedCount < reduced.size) {
-        reduced.forEach((n, id) => {
-            const nA = graph.get(n.neighbours[0])!!;
-            const nB = graph.get(n.neighbours[1])!!;
+    const reduced: NodeGraph = new Map(graph)
+    let nonReducedCount = 0
+    while(nonReducedCount < reduced.size) {
+      reduced.forEach((n, id) => {
+        const nA = graph.get(n.neighbours[0])!!
+        const nB = graph.get(n.neighbours[1])!!
 
-            if (
-                n.neighbours.length == 2 &&
-                ((nA.pos.x == n.pos.x && nB.pos.x == n.pos.x) ||
-                    (nA.pos.z == n.pos.z && nB.pos.z == n.pos.z))
-            ) {
-                const nAPos = n.neighbours[0];
-                const nA = reduced.get(nAPos)!!;
-                const nBPos = n.neighbours[1];
-                const nB = reduced.get(nBPos)!!;
+        if(n.neighbours.length == 2 && ((nA.pos.x == n.pos.x && nB.pos.x == n.pos.x) || (nA.pos.z == n.pos.z && nB.pos.z == n.pos.z))) {
+          const nAPos = n.neighbours[0]
+          const nA = reduced.get(nAPos)!!
+          const nBPos = n.neighbours[1]
+          const nB = reduced.get(nBPos)!!
 
-                nA.neighbours = nA.neighbours.filter((it) => it != id);
-                nB.neighbours = nB.neighbours.filter((it) => it != id);
-                nA.neighbours.push(nBPos);
-                nB.neighbours.push(nAPos);
-                reduced.set(nAPos, nA);
-                reduced.set(nBPos, nB);
-                reduced.delete(id);
-                print("Reduced: " + id + ` (x: ${n.pos.x}, z: ${n.pos.z})`);
-            } else {
-                nonReducedCount++;
-            }
-        });
+          nA.neighbours = nA.neighbours.filter(it => it != id)
+          nB.neighbours = nB.neighbours.filter(it => it != id)
+          nA.neighbours.push(nBPos)
+          nB.neighbours.push(nAPos)
+          reduced.set(nAPos, nA)
+          reduced.set(nBPos, nB)
+          reduced.delete(id)
+          print("Reduced: " + id + ` (x: ${n.pos.x}, z: ${n.pos.z})`)
+        } else {
+          nonReducedCount++
+        }
+      })
     }
-    return reduced;
+    return reduced
 }
 
 export function manhattanDistance(a: Pos2D, b: Pos2D): number {
@@ -346,27 +343,27 @@ export function russianMan(
     end: NodeID,
     graph: NodeGraph
 ): Path | null | undefined {
-    const finished: number[] = []
+    const finished: Set<NodeID> = new Set();
     const costs: Map<NodeID, Cost> = new Map();
     const paths: Map<NodeID, Path> = new Map();
 
     costs.set(start, 0);
     paths.set(start, [start]);
 
-  let runs = 0
-
-    while (runs < 20) {0
-        const cheapestCostEntry = [...costs]
-                .filter(([n, c]) => finished.includes(n) == false)
-                .sort((a,b) => b[1]-a[1])[0]
-
-        if (cheapestCostEntry == null || cheapestCostEntry == undefined) break;
-        const cheapestCost = cheapestCostEntry[0]
-        const current = cheapestCost
+    while (true) {
+        const cheapestCost = Math.min(
+            ...[...costs]
+                .filter(([id, n]) => !finished.has(id))
+                .map(([id, c]) => c)
+        );
+        if (cheapestCost == null) break;
+        const current = [...costs].find(([id, c]) => c == cheapestCost)!![0];
 
         if (current == end) return paths.get(end);
 
         const n = graph.get(current)!!.neighbours;
+
+        if (n == null || n.length == 0) error("Seperate Nodes");
 
         n.forEach((id) => {
             const edgeCost = cost(current, id, graph);
@@ -387,8 +384,7 @@ export function russianMan(
             }
         });
 
-        runs++
-        finished.push(current);
+        finished.add(current);
     }
 
     return null;

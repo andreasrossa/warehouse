@@ -32,10 +32,12 @@ graph = wl.reduceGraph(graph);
 
 print("Size:", graph.size);
 
+// print(serialize(graph))
 [...graph].forEach(([id, it]) =>
     print(
         `${id} (x: ${it.pos.x}, z: ${it.pos.z}): [${it.neighbours.join(", ")}]`
     )               
 );
 
-print("Path:", wl.russianMan(start, end, graph)?.join(", "))
+// print(`[${wl.russianMan(start, end, graph)?.join(", ")}]`)
+

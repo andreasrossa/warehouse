@@ -340,8 +340,7 @@ export function manhattanDistance(a: Pos2D, b: Pos2D): number {
 export function cost(a: NodeID, b: NodeID, graph: NodeGraph): number {
     return manhattanDistance(graph.get(a)!!.pos, graph.get(b)!!.pos);
 }
-
-export function russianMan(
+function russianMan(
     start: NodeID,
     end: NodeID,
     graph: NodeGraph

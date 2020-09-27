@@ -22,17 +22,15 @@ local r = wl:getRectangle(
 )
 local matrix = wl:scanRectangle(r, nav, geo)
 local nodePositions = wl:findAirPositions(matrix)
+nodePositions:forEach(
+    function(____, n, id) return print(
+        ((((tostring(id) .. " (x: ") .. tostring(n.x)) .. ", z: ") .. tostring(n.z)) .. ")"
+    ) end
+)
 local graph = wl:nodeGraphFromPositions(nodePositions)
-do
-    local ____try, ____error = pcall(
-        function()
-            graph = wl:reduceGraph(graph)
-        end
-    )
-    if not ____try then
-        print(____error)
-    end
-end
+print("Size before reduction:", graph.size)
+graph = wl:reduceGraph(graph)
+print("Size:", graph.size)
 __TS__ArrayForEach(
     {
         __TS__Spread(graph)
@@ -48,11 +46,10 @@ __TS__ArrayForEach(
     end
 )
 print(
-    ("[" .. tostring(
-        __TS__ArrayJoin(
-            wl:russianMan(start, ____end, graph),
-            ", "
-        )
-    )) .. "]"
+    "Path:",
+    __TS__ArrayJoin(
+        wl:russianMan(start, ____end, graph),
+        ", "
+    )
 )
 return ____exports

@@ -38,4 +38,3 @@ print("Size:", graph.size);
     )               
 );
 
-print("Path:", wl.russianMan(start, end, graph)?.join(", "))

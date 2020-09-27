@@ -21,21 +21,19 @@ const r = wl.getRectangle(waypoints[aLabel], waypoints[bLabel], nav.getPosition(
 let matrix: wl.Matrix2D = wl.scanRectangle(r, nav, geo)!!;
 
 const nodePositions = wl.findAirPositions(matrix);
-
-nodePositions.forEach((n, id) => print(`${id} (x: ${n.x}, z: ${n.z})`))
-
 let graph = wl.nodeGraphFromPositions(nodePositions);
 
-print("Size before reduction:", graph.size)
+try {
+    graph = wl.reduceGraph(graph);
+} catch (error) {
+    print(error)
+}
 
-graph = wl.reduceGraph(graph);
-
-print("Size:", graph.size);
-
+// print(serialize(graph))
 [...graph].forEach(([id, it]) =>
     print(
         `${id} (x: ${it.pos.x}, z: ${it.pos.z}): [${it.neighbours.join(", ")}]`
     )               
 );
 
-print("Path:", wl.russianMan(start, end, graph)?.join(", "))
+// print(`[${wl.russianMan(start, end, graph)?.join(", ")}]`)

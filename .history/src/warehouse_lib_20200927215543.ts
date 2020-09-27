@@ -346,27 +346,25 @@ export function russianMan(
     end: NodeID,
     graph: NodeGraph
 ): Path | null | undefined {
-    const finished: number[] = []
+    const finished: Set<NodeID> = new Set();
     const costs: Map<NodeID, Cost> = new Map();
     const paths: Map<NodeID, Path> = new Map();
 
     costs.set(start, 0);
     paths.set(start, [start]);
 
-  let runs = 0
-
-    while (runs < 20) {0
-        const cheapestCostEntry = [...costs]
-                .filter(([n, c]) => finished.includes(n) == false)
-                .sort((a,b) => b[1]-a[1])[0]
-
-        if (cheapestCostEntry == null || cheapestCostEntry == undefined) break;
-        const cheapestCost = cheapestCostEntry[0]
-        const current = cheapestCost
+    while (true) {
+        const cheapestCost = [...costs]
+            .filter(([id, n]) => !finished.has(id))
+            .sort((a, b) => a[1] - b[1])[0][0];
+        if (cheapestCost == null) break;
+        const current = [...costs].find(([id, c]) => c == cheapestCost)!![0];
 
         if (current == end) return paths.get(end);
 
         const n = graph.get(current)!!.neighbours;
+
+        if (n == null || n.length == 0) error("Seperate Nodes");
 
         n.forEach((id) => {
             const edgeCost = cost(current, id, graph);
@@ -387,8 +385,7 @@ export function russianMan(
             }
         });
 
-        runs++
-        finished.push(current);
+        finished.add(current);
     }
 
     return null;
