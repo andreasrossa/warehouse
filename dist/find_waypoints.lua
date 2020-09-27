@@ -1,67 +1,58 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 require("lualib_bundle");
 local ____exports = {}
+local wl = require("warehouse_lib")
 local component = require("component")
-local serialization = require("serialization")
 local parsedArgs = {...}
-local a = parsedArgs[1]
-local b = parsedArgs[2]
-local range = tonumber(parsedArgs[3]) or 1000
-local function toGlobalPos(self, offset, globalPos)
-    local newPos = {}
-    do
-        local i = 0
-        while i < 3 do
-            newPos[i + 1] = globalPos[i + 1] + offset[i + 1]
-            i = i + 1
-        end
-    end
-    return newPos
-end
-local width
-width = function(____, r) return math.abs(r.bottomRight[1] - r.bottomLeft[1]) end
-local length
-length = function(____, r) return math.abs(r.topRight[3] - r.bottomRight[3]) end
+local aLabel = parsedArgs[1]
+local bLabel = parsedArgs[2]
+local start = tonumber(parsedArgs[3])
+local ____end = tonumber(parsedArgs[4])
+local range = tonumber(parsedArgs[5]) or 100
 local nav = component.navigation
-local pos = {
-    nav:getPosition()
-}
-local waypoints = nav.findWaypoints(range)
-local wA = __TS__ArrayFind(
-    waypoints,
-    function(____, e) return e.label == a end
+local geo = component.geolyzer
+local gpu = component.gpu
+local waypoints = wl:getWaypoints({aLabel, bLabel}, nav, range)
+local r = wl:getRectangle(
+    waypoints[aLabel],
+    waypoints[bLabel],
+    {
+        nav.getPosition()
+    }
 )
-local wB = __TS__ArrayFind(
-    waypoints,
-    function(____, e) return e.label == b end
-)
-if wA == nil then
-    error(
-        tostring(a) .. " could not be found"
+local matrix = wl:scanRectangle(r, nav, geo)
+local nodePositions = wl:findAirPositions(matrix)
+local graph = wl:nodeGraphFromPositions(nodePositions)
+do
+    local ____try, ____error = pcall(
+        function()
+            graph = wl:reduceGraph(graph)
+        end
     )
+    if not ____try then
+        print(____error)
+    end
 end
-if wB == nil then
-    error(
-        tostring(b) .. " could not be found"
-    )
-end
-local r = {
-    bottomLeft = toGlobalPos(nil, wA.position, pos),
-    topRight = toGlobalPos(nil, wB.position, pos),
-    bottomRight = toGlobalPos(nil, {wB.position[1], wB.position[2], wA.position[3]}, pos),
-    topLeft = toGlobalPos(nil, {wA.position[1], wA.position[2], wB.position[3]}, pos)
-}
-print(
-    "Width: " .. tostring(
-        width(nil, r)
-    )
+__TS__ArrayForEach(
+    {
+        __TS__Spread(graph)
+    },
+    function(____, ____bindingPattern0)
+        local id = ____bindingPattern0[1]
+        local it = ____bindingPattern0[2]
+        return print(
+            ((((((tostring(id) .. " (x: ") .. tostring(it.pos.x)) .. ", z: ") .. tostring(it.pos.z)) .. "): [") .. tostring(
+                table.concat(it.neighbours, ", " or ",")
+            )) .. "]"
+        )
+    end
 )
 print(
-    "Length: " .. tostring(
-        length(nil, r)
-    )
-)
-print(
-    serialization.serialize(r, true)
+    ("[" .. tostring(
+        __TS__ArrayJoin(
+            wl:russianMan(start, ____end, graph),
+            ", "
+        )
+    )) .. "]"
 )
 return ____exports
