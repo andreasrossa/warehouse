@@ -463,16 +463,20 @@ export function moveZ(dist: number) {
 
 export function moveFromTo(from: Pos2D, to: Pos2D) {
     print(`Moving: (${from.x}, ${from.z}) -> (${to.x}, ${to.z})`)
-    if(from.z === to.z) {
-        const dist = to.x - from.x;
-        print("dist = " + dist)
-        moveZ(dist)
-    } else if (from.x === to.x) {
-        const dist = to.z - from.z;
-        print("dist = " + dist)
-        moveX(dist)
-    } else {
-        error("Tried to move diagonally")
+    try {
+        if(from.z === to.z) {
+            const dist = to.x - from.x;
+            print("dist = " + dist)
+            moveZ(dist)
+        } else if (from.x === to.x) {
+            const dist = to.z - from.z;
+            print("dist = " + dist)
+            moveX(dist)
+        } else {
+            error("Tried to move diagonally")
+        }
+    } catch (error) {
+        print("Failed moving", error.message)
     }
 }
 

@@ -472,20 +472,29 @@ function ____exports.moveFromTo(self, from, to)
     print(
         ((((((("Moving: (" .. tostring(from.x)) .. ", ") .. tostring(from.z)) .. ") -> (") .. tostring(to.x)) .. ", ") .. tostring(to.z)) .. ")"
     )
-    if from.z == to.z then
-        local dist = to.x - from.x
-        print(
-            "dist = " .. tostring(dist)
+    do
+        local ____try, ____error = pcall(
+            function()
+                if from.z == to.z then
+                    local dist = to.x - from.x
+                    print(
+                        "dist = " .. tostring(dist)
+                    )
+                    ____exports.moveZ(nil, dist)
+                elseif from.x == to.x then
+                    local dist = to.z - from.z
+                    print(
+                        "dist = " .. tostring(dist)
+                    )
+                    ____exports.moveX(nil, dist)
+                else
+                    error("Tried to move diagonally")
+                end
+            end
         )
-        ____exports.moveZ(nil, dist)
-    elseif from.x == to.x then
-        local dist = to.z - from.z
-        print(
-            "dist = " .. tostring(dist)
-        )
-        ____exports.moveX(nil, dist)
-    else
-        error("Tried to move diagonally")
+        if not ____try then
+            print("Failed moving", ____error.message)
+        end
     end
 end
 function ____exports.walkPath(self, path, nodeGraph)
