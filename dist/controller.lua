@@ -125,7 +125,11 @@ function ____exports.walkPath(self, path, nodeGraph)
         while i < (#path - 1) do
             local from = nodeGraph:get(path[i + 1])
             local to = nodeGraph:get(path[(i + 1) + 1])
+            if (from == nil) or (to == nil) then
+                error("From or to was null")
+            end
             ____exports.moveFromTo(nil, from.pos, to.pos)
+            os.sleep(0.5)
             i = i + 1
         end
     end

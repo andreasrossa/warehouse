@@ -87,9 +87,13 @@ export function moveFromTo(from: Pos2D, to: Pos2D) {
 export function walkPath(path: Path, nodeGraph: NodeGraph) {
     print("Walking Path with size " + path.length)
     for(let i = 0; i < path.length-1; i++) {
-        const from = nodeGraph.get(path[i])!!;
-        const to = nodeGraph.get(path[i+1])!!;
+        const from = nodeGraph.get(path[i]);
+        const to = nodeGraph.get(path[i+1]);
+
+        if(from === undefined || to === undefined) error("From or to was null")
+
         moveFromTo(from.pos, to.pos)
+        os.sleep(0.5)
     }
 }
 
