@@ -50,7 +50,7 @@ function ____exports.currentFacingDir(self)
     ::____switch3_end::
     return -1
 end
-function ____exports.faceDirection(self, dir)
+function ____exports.moveInDirection(self, dir, dist)
     print(
         "Facing: " .. tostring(
             tostring(dir)
@@ -80,9 +80,6 @@ function ____exports.faceDirection(self, dir)
             end
         end
     end
-end
-function ____exports.moveInDirection(self, dir, dist)
-    ____exports.faceDirection(nil, dir)
     do
         local i = 0
         while i < math.abs(dist) do

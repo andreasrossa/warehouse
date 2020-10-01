@@ -24,7 +24,7 @@ export function currentFacingDir(): FacingDir {
     return -1
 }
 
-export function faceDirection(dir: FacingDir) {
+export function moveInDirection(dir: FacingDir, dist: number) {
     print("Facing: " + dir.toString())
     const facing = currentFacingDir()
     let rotation = dir - facing;
@@ -44,10 +44,7 @@ export function faceDirection(dir: FacingDir) {
             robot.turnRight()
         }
     }
-}
 
-export function moveInDirection(dir: FacingDir, dist: number) {
-    faceDirection(dir)
     for(let i = 0; i < Math.abs(dist); i++) {
         moveForward()
     }
