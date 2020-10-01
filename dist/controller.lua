@@ -3,11 +3,7 @@ local ____exports = {}
 local robot, sides
 function ____exports.moveForward(self)
     print("Moving Forward")
-    if {
-        robot.move(sides.front)
-    } then
-        return
-    end
+    robot.move(sides.front)
 end
 robot = require("robot")
 local component = require("component")
@@ -81,7 +77,6 @@ function ____exports.faceDirection(self, dir)
     end
 end
 function ____exports.moveInDirection(self, dir, dist)
-    ____exports.faceDirection(nil, dir)
     do
         local i = 0
         while i < math.abs(dist) do
@@ -104,11 +99,19 @@ function ____exports.moveZ(self, dist)
         ____exports.moveInDirection(nil, ____exports.FacingDir.North, dist)
     end
 end
-function ____exports.moveFromTo(self, from, to, nodeGraph)
+function ____exports.moveFromTo(self, from, to)
     if from.x == to.x then
-        ____exports.moveX(nil, to.x - from.x)
+        local dist = to.x - from.x
+        print(
+            ("Moving " .. tostring(dist)) .. " in X"
+        )
+        ____exports.moveX(nil, dist)
     elseif from.z == to.z then
-        ____exports.moveZ(nil, to.z - from.z)
+        local dist = to.z - from.z
+        print(
+            ("Moving " .. tostring(dist)) .. " in Z"
+        )
+        ____exports.moveZ(nil, dist)
     else
         error("Tried to move diagonally")
     end
@@ -122,7 +125,7 @@ function ____exports.walkPath(self, path, nodeGraph)
         while i < (#path - 1) do
             local from = nodeGraph:get(path[i + 1])
             local to = nodeGraph:get(path[(i + 1) + 1])
-            ____exports.moveFromTo(nil, from.pos, to.pos, nodeGraph)
+            ____exports.moveFromTo(nil, from.pos, to.pos)
             i = i + 1
         end
     end

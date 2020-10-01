@@ -40,7 +40,7 @@ export function faceDirection(dir: FacingDir) {
 }
 
 export function moveInDirection(dir: FacingDir, dist: number) {
-    faceDirection(dir)
+   // faceDirection(dir)
     for(let i = 0; i < Math.abs(dist); i++) {
         moveForward()
     }
@@ -70,11 +70,15 @@ export function moveZ(dist: number) {
     }
 }
 
-export function moveFromTo(from: Pos2D, to: Pos2D, nodeGraph: NodeGraph) {
+export function moveFromTo(from: Pos2D, to: Pos2D) {
     if(from.x === to.x) {
-        moveX(to.x-from.x)
+        const dist = to.x - from.x;
+        print("Moving " + dist + " in X")
+        moveX(dist)
     } else if (from.z === to.z) {
-        moveZ(to.z-from.z)
+        const dist = to.z - from.z;
+        print("Moving " + dist + " in Z")
+        moveZ(dist)
     } else {
         error("Tried to move diagonally")
     }
@@ -85,11 +89,11 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
     for(let i = 0; i < path.length-1; i++) {
         const from = nodeGraph.get(path[i])!!;
         const to = nodeGraph.get(path[i+1])!!;
-        moveFromTo(from.pos, to.pos, nodeGraph)
+        moveFromTo(from.pos, to.pos)
     }
 }
 
 export function moveForward() {
     print("Moving Forward")
-    if(robot.move(sides.front)) return
+    robot.move(sides.front)
 }
