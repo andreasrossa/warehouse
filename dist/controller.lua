@@ -103,18 +103,18 @@ function ____exports.moveFromTo(self, from, to)
     print(
         ((((((("Moving: (" .. tostring(from.x)) .. ", ") .. tostring(from.z)) .. ") -> (") .. tostring(to.x)) .. ", ") .. tostring(to.z)) .. ")"
     )
-    if from.x == to.x then
+    if from.z == to.z then
         local dist = to.x - from.x
         print(
             "dist = " .. tostring(dist)
         )
-        ____exports.moveX(nil, dist)
-    elseif from.z == to.z then
+        ____exports.moveZ(nil, dist)
+    elseif from.x == to.x then
         local dist = to.z - from.z
         print(
             "dist = " .. tostring(dist)
         )
-        ____exports.moveZ(nil, dist)
+        ____exports.moveX(nil, dist)
     else
         error("Tried to move diagonally")
     end
