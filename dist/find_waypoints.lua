@@ -3,6 +3,7 @@ require("lualib_bundle");
 local ____exports = {}
 local wl = require("warehouse_lib")
 local component = require("component")
+local controller = require("controller")
 local parsedArgs = {...}
 local aLabel = parsedArgs[1]
 local bLabel = parsedArgs[2]
@@ -11,7 +12,6 @@ local ____end = tonumber(parsedArgs[4])
 local range = tonumber(parsedArgs[5]) or 100
 local nav = component.navigation
 local geo = component.geolyzer
-local gpu = component.gpu
 local waypoints = wl:getWaypoints({aLabel, bLabel}, nav, range)
 local r = wl:getRectangle(
     waypoints[aLabel],
@@ -45,11 +45,10 @@ __TS__ArrayForEach(
         )
     end
 )
+local path = wl:russianMan(start, ____end, graph)
 print(
     "Path:",
-    __TS__ArrayJoin(
-        wl:russianMan(start, ____end, graph),
-        ", "
-    )
+    table.concat(path, ", " or ",")
 )
+controller:walkPath(path, graph)
 return ____exports

@@ -9,6 +9,8 @@ declare namespace OpenOS {
          * @noSelf
          */
         findWaypoints(range: number): Waypoint[]
+        
+        getFacing(): number
     }
     
     interface Waypoint {

@@ -1,7 +1,5 @@
 import component = require("component")
-import { titledWindow } from "GUI";
-import { serialize } from "serialization";
-
+import controller = require("./controller")
 import * as wl from "./warehouse_lib"
 const parsedArgs = [...args];
 
@@ -13,7 +11,6 @@ const range = tonumber(parsedArgs[4]) || 100;
 
 const nav = component.navigation;
 const geo = component.geolyzer;
-const gpu = component.gpu;
 
 const waypoints = wl.getWaypoints([aLabel, bLabel], nav, range);
 const r = wl.getRectangle(waypoints[aLabel], waypoints[bLabel], nav.getPosition());
@@ -38,4 +35,7 @@ print("Size:", graph.size);
     )               
 );
 
-print("Path:", wl.russianMan(start, end, graph)?.join(", "))
+const path = wl.russianMan(start, end, graph)!!;
+print("Path:", path.join(", "))
+
+controller.walkPath(path, graph)
