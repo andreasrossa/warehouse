@@ -476,7 +476,7 @@ export function moveFromTo(from: Pos2D, to: Pos2D) {
             error("Tried to move diagonally")
         }
     } catch (error) {
-        print("Failed moving", Object.keys(error))
+        print("Failed moving", {...error})
     }
 }
 

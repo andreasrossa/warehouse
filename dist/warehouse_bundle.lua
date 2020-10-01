@@ -500,7 +500,7 @@ function ____exports.moveFromTo(self, from, to)
         if not ____try then
             print(
                 "Failed moving",
-                __TS__ObjectKeys(____error)
+                __TS__ObjectAssign({}, ____error)
             )
         end
     end
