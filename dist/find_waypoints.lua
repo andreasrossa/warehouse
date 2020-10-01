@@ -46,9 +46,5 @@ __TS__ArrayForEach(
     end
 )
 local path = wl:russianMan(start, ____end, graph)
-print(
-    "Path:",
-    table.concat(path, ", " or ",")
-)
 controller:walkPath(path, graph)
 return ____exports

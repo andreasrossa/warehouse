@@ -36,6 +36,6 @@ print("Size:", graph.size);
 );
 
 const path = wl.russianMan(start, end, graph)!!;
-print("Path:", path.join(", "))
+// print("Path:", path.join(", "))
 
 controller.walkPath(path, graph)
