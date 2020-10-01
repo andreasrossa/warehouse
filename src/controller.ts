@@ -74,9 +74,11 @@ export function moveFromTo(from: Pos2D, to: Pos2D) {
     print(`Moving: (${from.x}, ${from.z}) -> (${to.x}, ${to.z})`)
     if(from.x === to.x) {
         const dist = to.x - from.x;
+        print("dist = " + dist)
         moveX(dist)
     } else if (from.z === to.z) {
         const dist = to.z - from.z;
+        print("dist = " + dist)
         moveZ(dist)
     } else {
         error("Tried to move diagonally")
