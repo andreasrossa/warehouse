@@ -2,6 +2,7 @@
 local ____exports = {}
 local robot, sides
 function ____exports.moveForward(self)
+    print("Moving Forward")
     robot:move(sides.front)
 end
 robot = require("robot")
@@ -50,6 +51,11 @@ function ____exports.currentFacingDir(self)
     return -1
 end
 function ____exports.faceDirection(self, dir)
+    print(
+        "Facing: " .. tostring(
+            tostring(dir)
+        )
+    )
     local facing = ____exports.currentFacingDir(nil)
     local rotation = dir - facing
     if math.abs(rotation) == 270 then
@@ -109,6 +115,9 @@ function ____exports.moveFromTo(self, from, to, nodeGraph)
     end
 end
 function ____exports.walkPath(self, path, nodeGraph)
+    print(
+        "Walking Path with size " .. tostring(#path)
+    )
     do
         local i = 0
         while i < (#path - 1) do

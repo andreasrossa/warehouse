@@ -25,6 +25,7 @@ export function currentFacingDir(): FacingDir {
 }
 
 export function faceDirection(dir: FacingDir) {
+    print("Facing: " + dir.toString())
     const facing = currentFacingDir()
     let rotation = dir - facing;
 
@@ -87,6 +88,7 @@ export function moveFromTo(from: Pos2D, to: Pos2D, nodeGraph: NodeGraph) {
 }
 
 export function walkPath(path: Path, nodeGraph: NodeGraph) {
+    print("Walking Path with size " + path.length)
     for(let i = 0; i < path.length-1; i++) {
         const from = nodeGraph.get(path[i])!!;
         const to = nodeGraph.get(path[i+1])!!;
@@ -95,5 +97,6 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 }
 
 export function moveForward() {
+    print("Moving Forward")
     robot.move(sides.front)
 }
