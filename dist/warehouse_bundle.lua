@@ -498,7 +498,10 @@ function ____exports.moveFromTo(self, from, to)
             end
         )
         if not ____try then
-            print("Failed moving", ____error.message)
+            print(
+                "Failed moving",
+                __TS__ObjectKeys(____error)
+            )
         end
     end
 end
