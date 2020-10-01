@@ -4,7 +4,12 @@ local ____exports = {}
 local sides, robot
 function ____exports.moveForward(self)
     print("Moving Forward")
-    robot.move(sides.front)
+    local moveResult = {
+        robot.move(sides.front)
+    }
+    if not moveResult[1] then
+        print(moveResult[2])
+    end
 end
 local component = require("component")
 sides = require("sides")

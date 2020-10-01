@@ -495,7 +495,8 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 
 export function moveForward() {
     print("Moving Forward")
-    robot.move(sides.front)
+    const moveResult = robot.move(sides.front)
+    if(!moveResult[0]) print(moveResult[1])
 }
 
 
