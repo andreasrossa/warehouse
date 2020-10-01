@@ -1,8 +1,12 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local robot = require("robot")
+local robot, sides
+function ____exports.moveForward(self)
+    robot:move(sides.front)
+end
+robot = require("robot")
 local component = require("component")
-local sides = require("sides")
+sides = require("sides")
 local nav = component.navigation
 ____exports.FacingDir = {}
 ____exports.FacingDir.North = 0
@@ -76,7 +80,7 @@ function ____exports.moveInDirection(self, dir, dist)
     do
         local i = 0
         while i < math.abs(dist) do
-            robot.forward()
+            ____exports.moveForward(nil)
             i = i + 1
         end
     end

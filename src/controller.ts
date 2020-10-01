@@ -48,7 +48,7 @@ export function faceDirection(dir: FacingDir) {
 export function moveInDirection(dir: FacingDir, dist: number) {
     faceDirection(dir)
     for(let i = 0; i < Math.abs(dist); i++) {
-        robot.forward()
+        moveForward()
     }
 }
 
@@ -92,4 +92,8 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
         const to = nodeGraph.get(path[i+1])!!;
         moveFromTo(from.pos, to.pos, nodeGraph)
     }
+}
+
+export function moveForward() {
+    robot.move(sides.front)
 }
