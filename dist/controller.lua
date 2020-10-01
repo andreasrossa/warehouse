@@ -3,7 +3,9 @@ local ____exports = {}
 local robot, sides
 function ____exports.moveForward(self)
     print("Moving Forward")
-    if robot:move(sides.front) then
+    if {
+        robot.move(sides.front)
+    } then
         return
     end
 end

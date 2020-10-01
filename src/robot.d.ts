@@ -5,5 +5,9 @@ import * as robot from "robot"
  * @noResolution
  */
 declare module "robot" {
-    function move(side: number): boolean
+    /**
+     * @tupleReturn
+     * @param side 
+     */
+    function move(side: number): [boolean, string]
 }
