@@ -24,17 +24,10 @@ export function currentFacingDir(): FacingDir {
     return -1
 }
 
-export function moveInDirection(dir: FacingDir, dist: number) {
+export function faceDirection(dir: FacingDir) {
     print("Facing: " + dir.toString())
     const facing = currentFacingDir()
     let rotation = dir - facing;
-
-    if(Math.abs(rotation) === 270) {
-        rotation = -90
-    } else if(Math.abs(rotation) === -270) {
-        rotation = 90
-    }
-
     if(rotation < 0) {
         for(let i = 0; i <= Math.abs(rotation); i += 90) {
             robot.turnLeft()
@@ -44,7 +37,10 @@ export function moveInDirection(dir: FacingDir, dist: number) {
             robot.turnRight()
         }
     }
+}
 
+export function moveInDirection(dir: FacingDir, dist: number) {
+    faceDirection(dir)
     for(let i = 0; i < Math.abs(dist); i++) {
         moveForward()
     }
@@ -95,5 +91,5 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 
 export function moveForward() {
     print("Moving Forward")
-    robot.move(sides.front)
+    if(robot.move(sides.front)) return
 }

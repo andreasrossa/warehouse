@@ -3,7 +3,9 @@ local ____exports = {}
 local robot, sides
 function ____exports.moveForward(self)
     print("Moving Forward")
-    robot:move(sides.front)
+    if robot:move(sides.front) then
+        return
+    end
 end
 robot = require("robot")
 local component = require("component")
@@ -50,7 +52,7 @@ function ____exports.currentFacingDir(self)
     ::____switch3_end::
     return -1
 end
-function ____exports.moveInDirection(self, dir, dist)
+function ____exports.faceDirection(self, dir)
     print(
         "Facing: " .. tostring(
             tostring(dir)
@@ -58,11 +60,6 @@ function ____exports.moveInDirection(self, dir, dist)
     )
     local facing = ____exports.currentFacingDir(nil)
     local rotation = dir - facing
-    if math.abs(rotation) == 270 then
-        rotation = -90
-    elseif math.abs(rotation) == -270 then
-        rotation = 90
-    end
     if rotation < 0 then
         do
             local i = 0
@@ -80,6 +77,9 @@ function ____exports.moveInDirection(self, dir, dist)
             end
         end
     end
+end
+function ____exports.moveInDirection(self, dir, dist)
+    ____exports.faceDirection(nil, dir)
     do
         local i = 0
         while i < math.abs(dist) do
