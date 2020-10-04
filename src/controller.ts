@@ -98,6 +98,6 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 
 export function moveForward() {
     print("Moving Forward")
-    const mvt = robot.move(sides.front)
-    if(!mvt[0]) error(mvt[1], 0)
+    const mvt = robot.forward()
+    if(!mvt[0]) error(mvt[1]!!, 0)
 }

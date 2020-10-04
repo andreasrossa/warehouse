@@ -20,7 +20,16 @@ while true do
             print("Positions do not align! Ignoring...")
             goto __continue2
         end
-        controller:moveFromTo(pos, moveTo)
+        do
+            local ____try, e = pcall(
+                function()
+                    controller:moveFromTo(pos, moveTo)
+                end
+            )
+            if not ____try then
+                print(e[0])
+            end
+        end
     end
     ::__continue2::
 end

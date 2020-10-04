@@ -1,17 +1,17 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local robot, sides
+local robot
 function ____exports.moveForward(self)
     print("Moving Forward")
     local mvt = {
-        robot.move(sides.front)
+        robot.forward()
     }
     if not mvt[1] then
         error(mvt[2], 0)
     end
 end
 robot = require("robot")
-sides = require("sides")
+local sides = require("sides")
 ____exports.FacingDir = {}
 ____exports.FacingDir.North = 0
 ____exports.FacingDir[____exports.FacingDir.North] = "North"
