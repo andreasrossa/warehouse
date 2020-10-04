@@ -29,7 +29,7 @@ while (true) {
 	const moveTo = msg.moveTo;
 	
     if (!wh.positionsAlign(pos, moveTo)) {
-		print("Positions do not align! Ignoring...");
+		print(`Positions do not align (x: ${pos.x}, z: ${pos.z})! Ignoring...`);
 		continue;
 	}
 

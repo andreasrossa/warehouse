@@ -17,7 +17,9 @@ while true do
         local pos = wh:getPos(nav)
         local moveTo = msg.moveTo
         if not wh:positionsAlign(pos, moveTo) then
-            print("Positions do not align! Ignoring...")
+            print(
+                ((("Positions do not align (x: " .. tostring(pos.x)) .. ", z: ") .. tostring(pos.z)) .. ")! Ignoring..."
+            )
             goto __continue2
         end
         do
