@@ -212,10 +212,6 @@ export function scanRectangle(
 
     const relativeOrigin: Pos3D = { x: a.x - pos.x, y: 0, z: a.z - pos.z };
 
-    print(
-        `Scanning: w=${rW} l=${rL} - x=${relativeOrigin.x}, y=${relativeOrigin.y}, z=${relativeOrigin.z}`
-    );
-
     let scanData = null;
     try {
         scanData = geo.scan(

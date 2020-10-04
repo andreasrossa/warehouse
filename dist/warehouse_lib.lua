@@ -128,9 +128,6 @@ function ____exports.scanRectangle(self, r, nav, geo)
         error("Robot and rectangle not on the same y")
     end
     local relativeOrigin = {x = a.x - pos.x, y = 0, z = a.z - pos.z}
-    print(
-        (((((((("Scanning: w=" .. tostring(rW)) .. " l=") .. tostring(rL)) .. " - x=") .. tostring(relativeOrigin.x)) .. ", y=") .. tostring(relativeOrigin.y)) .. ", z=") .. tostring(relativeOrigin.z)
-    )
     local scanData = nil
     do
         local ____try, e = pcall(
