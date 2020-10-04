@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;warehouse_lib&quot; | TypescriptToLua</title>
-	<meta name="description" content="Documentation for TypescriptToLua">
+	<title>&quot;warehouse_lib&quot; | warehouse</title>
+	<meta name="description" content="Documentation for warehouse">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">TypescriptToLua</a>
+					<a href="../index.html" class="title">warehouse</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -98,7 +96,6 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#comparepos" class="tsd-kind-icon">compare<wbr>Pos</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#correctxz" class="tsd-kind-icon">correctXZ</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#cost-1" class="tsd-kind-icon">cost</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#findairpositions" class="tsd-kind-icon">find<wbr>Air<wbr>Positions</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#getneighbours" class="tsd-kind-icon">get<wbr>Neighbours</a></li>
@@ -107,7 +104,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#getwaypoints" class="tsd-kind-icon">get<wbr>Waypoints</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#length" class="tsd-kind-icon">length</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#manhattandistance" class="tsd-kind-icon">manhattan<wbr>Distance</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#nodegraphfrompositions" class="tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Positions</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#nodegraphfromnodeposmap" class="tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Node<wbr>Pos<wbr>Map</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#print3dmatrix" class="tsd-kind-icon">print3DMatrix</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#printwaypointarea" class="tsd-kind-icon">print<wbr>Waypoint<wbr>Area</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_warehouse_lib_.html#reducegraph" class="tsd-kind-icon">reduce<wbr>Graph</a></li>
@@ -129,7 +126,7 @@
 					<div class="tsd-signature tsd-kind-icon">Cost<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L9">warehouse_lib.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L16">warehouse_lib.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,9 +136,14 @@
 					<div class="tsd-signature tsd-kind-icon">Matrix2D<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L5">warehouse_lib.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L11">warehouse_lib.ts:11</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Matrix of [z][x]</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="matrix3d" class="tsd-anchor"></a>
@@ -149,9 +151,14 @@
 					<div class="tsd-signature tsd-kind-icon">Matrix3D<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L4">warehouse_lib.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L6">warehouse_lib.ts:6</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Matrix of [y][z][x]</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="nodegraph" class="tsd-anchor"></a>
@@ -159,7 +166,7 @@
 					<div class="tsd-signature tsd-kind-icon">Node<wbr>Graph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.graphnode.html" class="tsd-signature-type">GraphNode</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L22">warehouse_lib.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L29">warehouse_lib.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +176,7 @@
 					<div class="tsd-signature tsd-kind-icon">NodeID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L8">warehouse_lib.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L15">warehouse_lib.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +186,7 @@
 					<div class="tsd-signature tsd-kind-icon">Node<wbr>Pos<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L19">warehouse_lib.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L26">warehouse_lib.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">Pair&lt;A, B&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>first<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">A</span><span class="tsd-signature-symbol">; </span>second<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">B</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L7">warehouse_lib.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L13">warehouse_lib.ts:13</a></li>
 						</ul>
 					</aside>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -219,7 +226,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<span class="tsd-signature-symbol">:</span> <a href="_warehouse_lib_.html#nodeid" class="tsd-signature-type">NodeID</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L10">warehouse_lib.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L17">warehouse_lib.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -229,7 +236,7 @@
 					<div class="tsd-signature tsd-kind-icon">Pos<wbr>Node<wbr>Graph<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.graphnode.html" class="tsd-signature-type">GraphNode</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L21">warehouse_lib.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L28">warehouse_lib.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -239,7 +246,7 @@
 					<div class="tsd-signature tsd-kind-icon">Position2D<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L3">warehouse_lib.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L2">warehouse_lib.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -249,7 +256,7 @@
 					<div class="tsd-signature tsd-kind-icon">Position3D<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L2">warehouse_lib.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L1">warehouse_lib.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -266,9 +273,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L250">warehouse_lib.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L282">warehouse_lib.ts:282</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compares two <a href="../interfaces/_warehouse_lib_.pos2d.html">Positions</a> and checks their equality</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -279,29 +291,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="correctxz" class="tsd-anchor"></a>
-					<h3>correctXZ</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">correctXZ<span class="tsd-signature-symbol">(</span>matrix<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix3d" class="tsd-signature-type">Matrix3D</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix3d" class="tsd-signature-type">Matrix3D</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L163">warehouse_lib.ts:163</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>matrix: <a href="_warehouse_lib_.html#matrix3d" class="tsd-signature-type">Matrix3D</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#matrix3d" class="tsd-signature-type">Matrix3D</a></h4>
+							<p>equality of <a href="../interfaces/_warehouse_lib_.pos2d.html">Positions</a></p>
 						</li>
 					</ul>
 				</section>
@@ -315,9 +305,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L340">warehouse_lib.ts:340</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L410">warehouse_lib.ts:410</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cost function that determines the distance between two nodes.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -328,6 +323,8 @@
 								</li>
 								<li>
 									<h5>graph: <a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -338,22 +335,28 @@
 					<a name="findairpositions" class="tsd-anchor"></a>
 					<h3>find<wbr>Air<wbr>Positions</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>Air<wbr>Positions<span class="tsd-signature-symbol">(</span>matrix<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix2d" class="tsd-signature-type">Matrix2D</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Air<wbr>Positions<span class="tsd-signature-symbol">(</span>matrix<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix2d" class="tsd-signature-type">Matrix2D</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L273">warehouse_lib.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L311">warehouse_lib.ts:311</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Finds all air-<a href="../interfaces/_warehouse_lib_.pos2d.html">positions</a> (hardness = 0) in the given <a href="_warehouse_lib_.html#matrix2d">matrix</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>matrix: <a href="_warehouse_lib_.html#matrix2d" class="tsd-signature-type">Matrix2D</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a></h4>
+							<p>NodePosMap of: Index of found air-block --&gt; Position of found air-block</p>
 						</li>
 					</ul>
 				</section>
@@ -361,22 +364,29 @@
 					<a name="getneighbours" class="tsd-anchor"></a>
 					<h3>get<wbr>Neighbours</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Neighbours<span class="tsd-signature-symbol">(</span>currentPos<span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a>, posArr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Neighbours<span class="tsd-signature-symbol">(</span>currentPos<span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a>, nodePosMap<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L258">warehouse_lib.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L291">warehouse_lib.ts:291</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets all directly-adjacent neighbours of the given <a href="../interfaces/_warehouse_lib_.pos2d.html">positions</a> in the <a href="_warehouse_lib_.html#nodeposmap">NodePosMap</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>currentPos: <a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a></h5>
 								</li>
 								<li>
-									<h5>posArr: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nodePosMap: <a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -387,19 +397,28 @@
 					<a name="getpos" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Pos</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Pos<span class="tsd-signature-symbol">(</span>nav<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Navigation</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Pos<span class="tsd-signature-symbol">(</span>nav<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L59">warehouse_lib.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L80">warehouse_lib.ts:80</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the current Position with the given <a href="../interfaces/_navigation_d_.openos.navigation.html">Navigation Component</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nav: <span class="tsd-signature-type">Navigation</span></h5>
+									<h5>nav: <a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a></h4>
@@ -410,13 +429,13 @@
 					<a name="getrectangle" class="tsd-anchor"></a>
 					<h3>get<wbr>Rectangle</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Rectangle<span class="tsd-signature-symbol">(</span>wA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Waypoint</span>, wB<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Waypoint</span>, pos<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Rectangle<span class="tsd-signature-symbol">(</span>wA<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.waypoint.html" class="tsd-signature-type">Waypoint</a>, wB<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.waypoint.html" class="tsd-signature-type">Waypoint</a>, pos<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L95">warehouse_lib.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L116">warehouse_lib.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -428,10 +447,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>wA: <span class="tsd-signature-type">Waypoint</span></h5>
+									<h5>wA: <a href="../interfaces/_navigation_d_.openos.waypoint.html" class="tsd-signature-type">Waypoint</a></h5>
 								</li>
 								<li>
-									<h5>wB: <span class="tsd-signature-type">Waypoint</span></h5>
+									<h5>wB: <a href="../interfaces/_navigation_d_.openos.waypoint.html" class="tsd-signature-type">Waypoint</a></h5>
 								</li>
 								<li>
 									<h5>pos: <a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a></h5>
@@ -445,18 +464,18 @@
 					<a name="getwaypoints" class="tsd-anchor"></a>
 					<h3>get<wbr>Waypoints</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Waypoints<span class="tsd-signature-symbol">(</span>waypointLabels<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, nav<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Navigation</span>, waypointRange<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Waypoints<span class="tsd-signature-symbol">(</span>waypointLabels<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, nav<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a>, waypointRange<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L67">warehouse_lib.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L88">warehouse_lib.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Finds waypoints for the specified labels</p>
+									<p>Finds <a href="../interfaces/_navigation_d_.openos.waypoint.html">Waypoints</a> for the specified labels</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -468,7 +487,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>nav: <span class="tsd-signature-type">Navigation</span></h5>
+									<h5>nav: <a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> waypointRange: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 100</span></h5>
@@ -477,7 +496,7 @@
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{}</span></h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter-index-signature">
-									<h5><span class="tsd-signature-symbol">[</span>name: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">Waypoint</span></h5>
+									<h5><span class="tsd-signature-symbol">[</span>name: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/_navigation_d_.openos.waypoint.html" class="tsd-signature-type">Waypoint</a></h5>
 								</li>
 							</ul>
 						</li>
@@ -493,13 +512,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L57">warehouse_lib.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L73">warehouse_lib.ts:73</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the length of a <a href="../interfaces/_warehouse_lib_.rectangle.html">Rectangle</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>r: <a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -516,9 +544,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L336">warehouse_lib.ts:336</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L400">warehouse_lib.ts:400</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the manhattan-distance in blocks of two <a href="../interfaces/_warehouse_lib_.pos2d.html">positions</a></p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>remark</dt>
+									<dd><p>The manhattan-distance is the shortest path in a grid (not diagonally)</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -526,6 +564,8 @@
 								</li>
 								<li>
 									<h5>b: <a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -533,22 +573,35 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="nodegraphfrompositions" class="tsd-anchor"></a>
-					<h3>node<wbr>Graph<wbr>From<wbr>Positions</h3>
+					<a name="nodegraphfromnodeposmap" class="tsd-anchor"></a>
+					<h3>node<wbr>Graph<wbr>From<wbr>Node<wbr>Pos<wbr>Map</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Positions<span class="tsd-signature-symbol">(</span>nodePositions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></li>
+						<li class="tsd-signature tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Node<wbr>Pos<wbr>Map<span class="tsd-signature-symbol">(</span>nodePositions<span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L289">warehouse_lib.ts:289</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L335">warehouse_lib.ts:335</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generates a <a href="_warehouse_lib_.html#nodegraph">NodeGraph</a> from a <a href="_warehouse_lib_.html#nodeposmap">NodePosMap</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>remark</dt>
+									<dd><p>the main difference between the two
+										is that <a href="_warehouse_lib_.html#nodegraph">NodeGraph</a> <a href="../interfaces/_warehouse_lib_.graphnode.html">Nodes</a> are aware of their neighbours</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nodePositions: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_warehouse_lib_.pos2d.html" class="tsd-signature-type">Pos2D</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nodePositions: <a href="_warehouse_lib_.html#nodeposmap" class="tsd-signature-type">NodePosMap</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></h4>
@@ -565,19 +618,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L145">warehouse_lib.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L172">warehouse_lib.ts:172</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Prints a <a href="_warehouse_lib_.html#matrix3d">3D Matrix</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>matrix: <a href="_warehouse_lib_.html#matrix3d" class="tsd-signature-type">Matrix3D</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Matrix to be printed</p>
+									</div>
 								</li>
 								<li>
 									<h5>gpu: <span class="tsd-signature-type">GPU</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>GPU Component</p>
+									</div>
 								</li>
 								<li>
 									<h5>term: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Terminal Component</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -588,37 +655,63 @@
 					<a name="printwaypointarea" class="tsd-anchor"></a>
 					<h3>print<wbr>Waypoint<wbr>Area</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">print<wbr>Waypoint<wbr>Area<span class="tsd-signature-symbol">(</span>waypointA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, waypointB<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, waypointRange<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, nav<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Navigation</span>, geo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Geolyzer</span>, gpu<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GPU</span>, term<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">print<wbr>Waypoint<wbr>Area<span class="tsd-signature-symbol">(</span>waypointA<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, waypointB<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, waypointRange<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, nav<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a>, geo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Geolyzer</span>, gpu<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GPU</span>, term<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L223">warehouse_lib.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L249">warehouse_lib.ts:249</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Scans and prints a Waypoint-Area</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>waypointA: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Bottom Right Waypoint</p>
+									</div>
 								</li>
 								<li>
 									<h5>waypointB: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Top Left Waypoint</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> waypointRange: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 100</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Scan-Range for waypoints</p>
+									</div>
 								</li>
 								<li>
-									<h5>nav: <span class="tsd-signature-type">Navigation</span></h5>
+									<h5>nav: <a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Navigation Component</p>
+									</div>
 								</li>
 								<li>
 									<h5>geo: <span class="tsd-signature-type">Geolyzer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Geolyzer Component</p>
+									</div>
 								</li>
 								<li>
 									<h5>gpu: <span class="tsd-signature-type">GPU</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>GPU Component</p>
+									</div>
 								</li>
 								<li>
 									<h5>term: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Terminal Component</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -635,9 +728,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L302">warehouse_lib.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L360">warehouse_lib.ts:360</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Takes a <a href="_warehouse_lib_.html#nodegraph">NodeGraph</a> and reduces it as much as possible.
+									Effectively removes all &quot;path&quot;-nodes that dont branch out.s</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>remarks</dt>
+									<dd><p>It does this by finding three Nodes that have exactly
+											that are all adjacent and in either the same X or Z axis.
+											It then removes the middle Node and connects the two outer nodes
+										(therefore removing the middle-node that connects to nothing and is not needed).</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -645,6 +752,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></h4>
+							<p>Reduced Copy of the original graph</p>
 						</li>
 					</ul>
 				</section>
@@ -658,22 +766,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L344">warehouse_lib.ts:344</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L423">warehouse_lib.ts:423</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Implementation of dijkstras shortest-path</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>start: <a href="_warehouse_lib_.html#nodeid" class="tsd-signature-type">NodeID</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Starting-Node</p>
+									</div>
 								</li>
 								<li>
 									<h5>end: <a href="_warehouse_lib_.html#nodeid" class="tsd-signature-type">NodeID</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>End-Node</p>
+									</div>
 								</li>
 								<li>
 									<h5>graph: <a href="_warehouse_lib_.html#nodegraph" class="tsd-signature-type">NodeGraph</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Node-Graph</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_warehouse_lib_.html#path" class="tsd-signature-type">Path</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+							<p>An array of <a href="_warehouse_lib_.html#nodeid">Node-Ids</a></p>
 						</li>
 					</ul>
 				</section>
@@ -681,18 +804,18 @@
 					<a name="scanrectangle" class="tsd-anchor"></a>
 					<h3>scan<wbr>Rectangle</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">scan<wbr>Rectangle<span class="tsd-signature-symbol">(</span>r<span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a>, nav<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Navigation</span>, geo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Geolyzer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix2d" class="tsd-signature-type">Matrix2D</a></li>
+						<li class="tsd-signature tsd-kind-icon">scan<wbr>Rectangle<span class="tsd-signature-symbol">(</span>r<span class="tsd-signature-symbol">: </span><a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a>, nav<span class="tsd-signature-symbol">: </span><a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a>, geo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Geolyzer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_warehouse_lib_.html#matrix2d" class="tsd-signature-type">Matrix2D</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L179">warehouse_lib.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L195">warehouse_lib.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Scans a rectangle and returns a 2D Array</p>
+									<p>Scans a rectangle and returns a <a href="_warehouse_lib_.html#matrix2d">Matrix 2D</a></p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -704,7 +827,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>nav: <span class="tsd-signature-type">Navigation</span></h5>
+									<h5>nav: <a href="../interfaces/_navigation_d_.openos.navigation.html" class="tsd-signature-type">Navigation</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Navigtation Component</p>
 									</div>
@@ -727,12 +850,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L122">warehouse_lib.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L143">warehouse_lib.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Takes a Scan and converts it to a 3D Matrix.
+									<p>Takes a Scan and converts it to a <a href="_warehouse_lib_.html#matrix3d">3D Matrix</a>.
 									It is accessible like matrix[y][z][x]</p>
 								</div>
 							</div>
@@ -777,18 +900,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L44">warehouse_lib.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L51">warehouse_lib.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts a given offset (relative pos) to a global pos, relative to globalPos</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>offset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>converts a given offset (relative pos) to a global pos, relative to [[globalPos]]</p>
-									</div>
 								</li>
 								<li>
 									<h5>globalPos: <a href="_warehouse_lib_.html#position3d" class="tsd-signature-type">Position3D</a></h5>
@@ -810,13 +933,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/b8bcacd/src/warehouse_lib.ts#L55">warehouse_lib.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/andreasrossa/warehouse/blob/faa79ed/src/warehouse_lib.ts#L66">warehouse_lib.ts:66</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the width of a <a href="../interfaces/_warehouse_lib_.rectangle.html">Rectangle</a></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>r: <a href="../interfaces/_warehouse_lib_.rectangle.html" class="tsd-signature-type">Rectangle</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -842,6 +974,12 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_fw_bak_.html">&quot;fw.bak&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_navigation_d_.html">&quot;navigation.d&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_robot_d_.html">&quot;robot.d&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_turn_.html">&quot;turn&quot;</a>
@@ -902,9 +1040,6 @@
 						<a href="_warehouse_lib_.html#comparepos" class="tsd-kind-icon">compare<wbr>Pos</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_warehouse_lib_.html#correctxz" class="tsd-kind-icon">correctXZ</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_warehouse_lib_.html#cost-1" class="tsd-kind-icon">cost</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
@@ -929,7 +1064,7 @@
 						<a href="_warehouse_lib_.html#manhattandistance" class="tsd-kind-icon">manhattan<wbr>Distance</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_warehouse_lib_.html#nodegraphfrompositions" class="tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Positions</a>
+						<a href="_warehouse_lib_.html#nodegraphfromnodeposmap" class="tsd-kind-icon">node<wbr>Graph<wbr>From<wbr>Node<wbr>Pos<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_warehouse_lib_.html#print3dmatrix" class="tsd-kind-icon">print3DMatrix</a>
@@ -965,6 +1100,7 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>

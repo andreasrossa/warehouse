@@ -1,14 +1,13 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
+require("navigation")
 local robot, sides
 function ____exports.moveForward(self)
     print("Moving Forward")
     robot.move(sides.front)
 end
 robot = require("robot")
-local component = require("component")
 sides = require("sides")
-local nav = component.navigation
 ____exports.FacingDir = {}
 ____exports.FacingDir.North = 0
 ____exports.FacingDir[____exports.FacingDir.North] = "North"
@@ -18,7 +17,7 @@ ____exports.FacingDir.South = 180
 ____exports.FacingDir[____exports.FacingDir.South] = "South"
 ____exports.FacingDir.West = 270
 ____exports.FacingDir[____exports.FacingDir.West] = "West"
-function ____exports.currentFacingDir(self)
+function ____exports.currentFacingDir(self, nav)
     local facing = nav:getFacing()
     local ____switch3 = facing
     if ____switch3 == sides.front then
@@ -50,13 +49,13 @@ function ____exports.currentFacingDir(self)
     ::____switch3_end::
     return -1
 end
-function ____exports.faceDirection(self, dir)
+function ____exports.faceDirection(self, dir, nav)
     print(
         "Facing: " .. tostring(
             tostring(dir)
         )
     )
-    local facing = ____exports.currentFacingDir(nil)
+    local facing = ____exports.currentFacingDir(nil, nav)
     local rotation = dir - facing
     if rotation < 0 then
         do

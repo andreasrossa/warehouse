@@ -27,7 +27,7 @@ nodePositions:forEach(
         ((((tostring(id) .. " (x: ") .. tostring(n.x)) .. ", z: ") .. tostring(n.z)) .. ")"
     ) end
 )
-local graph = wl:nodeGraphFromPositions(nodePositions)
+local graph = wl:nodeGraphFromNodePosMap(nodePositions)
 print("Size before reduction:", graph.size)
 graph = wl:reduceGraph(graph)
 print("Size:", graph.size)

@@ -1,0 +1,27 @@
+{
+  "name": "warehouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@opct/gui": "^0.0.6",
+    "@opct/mineos": "^0.0.2",
+    "@opct/openos": "^0.0.15"
+  },
+  "scripts": {
+    "build": "tstl",
+    "dev": "tstl --watch",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "docs": "typedoc --externalPattern 'node_modules/@opct/**/*.ts' --out docs src"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
+    "typescript": "^4.0.3",
+    "typescript-to-lua": "^0.35.0"
+  }
+}

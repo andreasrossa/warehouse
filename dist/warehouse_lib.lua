@@ -1,7 +1,6 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 require("lualib_bundle");
 local ____exports = {}
-local term = require("term")
 function ____exports.toGlobalPos(self, offset, globalPos)
     local newPos = {}
     do
@@ -77,8 +76,8 @@ function ____exports.scanTo3DMatrix(self, sizeX, sizeY, sizeZ, scanData)
     end
     return matrix
 end
-function ____exports.print3DMatrix(self, matrix, gpu)
-    term.clear()
+function ____exports.print3DMatrix(self, matrix, gpu, term)
+    term:clear()
     local cursorOffset = {7, 7}
     do
         local y = 0
@@ -110,26 +109,6 @@ function ____exports.print3DMatrix(self, matrix, gpu)
             y = y + 1
         end
     end
-end
-function ____exports.printNodeGraph(self, graph)
-end
-function ____exports.correctXZ(self, matrix)
-    local newMatrix = __TS__ObjectAssign(matrix)
-    do
-        local y = 0
-        while y < #matrix do
-            newMatrix[y] = __TS__ArrayReverse(matrix[y + 1])
-            do
-                local z = 0
-                while z < #matrix[y + 1] do
-                    newMatrix[y][z] = __TS__ArrayReverse(matrix[y + 1][z + 1])
-                    z = z + 1
-                end
-            end
-            y = y + 1
-        end
-    end
-    return newMatrix
 end
 function ____exports.scanRectangle(self, r, nav, geo)
     local pos = ____exports.getPos(nil, nav)
@@ -164,7 +143,7 @@ function ____exports.scanRectangle(self, r, nav, geo)
     end
     return ____exports.scanTo3DMatrix(nil, rW, 1, rL, scanData)[1]
 end
-function ____exports.printWaypointArea(self, waypointA, waypointB, waypointRange, nav, geo, gpu)
+function ____exports.printWaypointArea(self, waypointA, waypointB, waypointRange, nav, geo, gpu, term)
     if waypointRange == nil then
         waypointRange = 100
     end
@@ -192,16 +171,16 @@ function ____exports.printWaypointArea(self, waypointA, waypointB, waypointRange
     if matrix == nil then
         return
     end
-    ____exports.print3DMatrix(nil, {matrix}, gpu)
+    ____exports.print3DMatrix(nil, {matrix}, gpu, term)
 end
 function ____exports.comparePos(self, a, b)
     return (a.x == b.x) and (a.z == b.z)
 end
-function ____exports.getNeighbours(self, currentPos, posArr)
+function ____exports.getNeighbours(self, currentPos, nodePosMap)
     return __TS__ArrayMap(
         __TS__ArrayFilter(
             {
-                __TS__Spread(posArr)
+                __TS__Spread(nodePosMap)
             },
             function(____, ____bindingPattern0)
                 local id = ____bindingPattern0[1]
@@ -228,12 +207,12 @@ function ____exports.findAirPositions(self, matrix)
                     do
                         local tile = matrix[z + 1][x + 1]
                         if tile ~= 0 then
-                            goto __continue38
+                            goto __continue34
                         end
                         nodePositions:set(i, {x = x, z = z})
                         i = i + 1
                     end
-                    ::__continue38::
+                    ::__continue34::
                     x = x + 1
                 end
             end
@@ -242,7 +221,7 @@ function ____exports.findAirPositions(self, matrix)
     end
     return nodePositions
 end
-function ____exports.nodeGraphFromPositions(self, nodePositions)
+function ____exports.nodeGraphFromNodePosMap(self, nodePositions)
     local graph = __TS__New(Map)
     __TS__ArrayForEach(
         {
