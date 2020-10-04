@@ -23,7 +23,7 @@ while true do
         do
             local ____try, e = pcall(
                 function()
-                    controller:moveFromTo(pos, moveTo)
+                    controller:move(moveTo)
                 end
             )
             if not ____try then
