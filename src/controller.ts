@@ -83,8 +83,6 @@ export function moveFromTo(from: Pos2D, to: Pos2D) {
     }
 }
 
-export const move = (mvt: Pos2D) => moveFromTo({x: 0, z: 0}, mvt)
-
 export function walkPath(path: Path, nodeGraph: NodeGraph) {
     print("Walking Path with size " + path.length)
     for(let i = 0; i < path.length-1; i++) {

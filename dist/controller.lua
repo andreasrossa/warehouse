@@ -122,7 +122,6 @@ function ____exports.moveFromTo(self, from, to)
         error("Tried to move diagonally")
     end
 end
-____exports.move = function(____, mvt) return ____exports.moveFromTo(nil, {x = 0, z = 0}, mvt) end
 function ____exports.walkPath(self, path, nodeGraph)
     print(
         "Walking Path with size " .. tostring(#path)

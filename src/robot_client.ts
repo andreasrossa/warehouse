@@ -34,7 +34,7 @@ while (true) {
 	}
 
 	try {
-		controller.move(moveTo)
+		controller.moveFromTo(pos, moveTo)
 	} catch (e) {
 		print(e[0])
 	}
