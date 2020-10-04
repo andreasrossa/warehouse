@@ -13,7 +13,7 @@ while true do
         local e = {
             event.pull("modem_message")
         }
-        local msg = serialization.unserialize(e[5])
+        local msg = serialization.unserialize(e[6])
         local pos = wh:getPos(nav)
         local moveTo = msg.moveTo
         if not wh:positionsAlign(pos, moveTo) then

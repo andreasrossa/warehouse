@@ -1,7 +1,6 @@
 import robot = require("robot")
 import component = require("component")
 import sides = require("sides")
-import "./navigation"
 import { NodeGraph, nodeGraphFromNodePosMap, NodeID, Path, Pos2D } from "./warehouse_lib";
 
 export enum FacingDir {
@@ -50,7 +49,7 @@ export function moveInDirection(dir: FacingDir, dist: number) {
  * @param dist distance
  */
 export function moveX(dist: number) {
-    if(dist < 0) {
+    if(dist < 0) {  
         moveInDirection(FacingDir.East, dist)
     } else {
         moveInDirection(FacingDir.West, dist)
@@ -99,5 +98,6 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 
 export function moveForward() {
     print("Moving Forward")
-    robot.move(sides.front)
+    const mvt = robot.move(sides.front)
+    if(!mvt[0]) error(mvt[1], 0)
 }

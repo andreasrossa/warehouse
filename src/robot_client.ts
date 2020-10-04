@@ -24,7 +24,7 @@ modem.open(11);
 // Main Loop
 while (true) {
     const e = event.pull("modem_message");
-    const msg: RobotMoveEvent = serialization.unserialize(e[4]);
+    const msg: RobotMoveEvent = serialization.unserialize(e[5]);
     const pos: wh.Pos2D = wh.getPos(nav);
 	const moveTo = msg.moveTo;
 	

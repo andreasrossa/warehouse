@@ -1,10 +1,14 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-require("navigation")
 local robot, sides
 function ____exports.moveForward(self)
     print("Moving Forward")
-    robot.move(sides.front)
+    local mvt = {
+        robot.move(sides.front)
+    }
+    if not mvt[1] then
+        error(mvt[2], 0)
+    end
 end
 robot = require("robot")
 sides = require("sides")
