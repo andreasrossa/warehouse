@@ -135,7 +135,16 @@ function ____exports.walkPath(self, path, nodeGraph, nav)
             if (from == nil) or (to == nil) then
                 error("From or to was null")
             end
-            ____exports.moveFromTo(nil, from.pos, to.pos, nav)
+            do
+                local ____try, ____error = pcall(
+                    function()
+                        ____exports.moveFromTo(nil, from.pos, to.pos, nav)
+                    end
+                )
+                if not ____try then
+                    print(____error)
+                end
+            end
             os.sleep(0.5)
             i = i + 1
         end

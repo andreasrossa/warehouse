@@ -91,7 +91,12 @@ export function walkPath(path: Path, nodeGraph: NodeGraph, nav: OpenOS.Navigatio
 
         if(from === undefined || to === undefined) error("From or to was null")
 
-        moveFromTo(from.pos, to.pos, nav)
+        try {
+            moveFromTo(from.pos, to.pos, nav)
+        } catch (error) {
+            print(error)
+        }
+
         os.sleep(0.5)
     }
 }
