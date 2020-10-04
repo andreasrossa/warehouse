@@ -79,7 +79,8 @@ function ____exports.faceDirection(self, dir, nav)
         end
     end
 end
-function ____exports.moveInDirection(self, dir, dist)
+function ____exports.moveInDirection(self, dir, dist, nav)
+    ____exports.faceDirection(nil, dir, nav)
     do
         local i = 0
         while i < math.abs(dist) do
@@ -88,21 +89,21 @@ function ____exports.moveInDirection(self, dir, dist)
         end
     end
 end
-function ____exports.moveX(self, dist)
+function ____exports.moveX(self, dist, nav)
     if dist < 0 then
-        ____exports.moveInDirection(nil, ____exports.FacingDir.East, dist)
+        ____exports.moveInDirection(nil, ____exports.FacingDir.East, dist, nav)
     else
-        ____exports.moveInDirection(nil, ____exports.FacingDir.West, dist)
+        ____exports.moveInDirection(nil, ____exports.FacingDir.West, dist, nav)
     end
 end
-function ____exports.moveZ(self, dist)
+function ____exports.moveZ(self, dist, nav)
     if dist < 0 then
-        ____exports.moveInDirection(nil, ____exports.FacingDir.South, dist)
+        ____exports.moveInDirection(nil, ____exports.FacingDir.South, dist, nav)
     else
-        ____exports.moveInDirection(nil, ____exports.FacingDir.North, dist)
+        ____exports.moveInDirection(nil, ____exports.FacingDir.North, dist, nav)
     end
 end
-function ____exports.moveFromTo(self, from, to)
+function ____exports.moveFromTo(self, from, to, nav)
     print(
         ((((((("Moving: (" .. tostring(from.x)) .. ", ") .. tostring(from.z)) .. ") -> (") .. tostring(to.x)) .. ", ") .. tostring(to.z)) .. ")"
     )
@@ -111,18 +112,18 @@ function ____exports.moveFromTo(self, from, to)
         print(
             "dist = " .. tostring(dist)
         )
-        ____exports.moveZ(nil, dist)
+        ____exports.moveZ(nil, dist, nav)
     elseif from.x == to.x then
         local dist = to.z - from.z
         print(
             "dist = " .. tostring(dist)
         )
-        ____exports.moveX(nil, dist)
+        ____exports.moveX(nil, dist, nav)
     else
         error("Tried to move diagonally")
     end
 end
-function ____exports.walkPath(self, path, nodeGraph)
+function ____exports.walkPath(self, path, nodeGraph, nav)
     print(
         "Walking Path with size " .. tostring(#path)
     )
@@ -134,7 +135,7 @@ function ____exports.walkPath(self, path, nodeGraph)
             if (from == nil) or (to == nil) then
                 error("From or to was null")
             end
-            ____exports.moveFromTo(nil, from.pos, to.pos)
+            ____exports.moveFromTo(nil, from.pos, to.pos, nav)
             os.sleep(0.5)
             i = i + 1
         end

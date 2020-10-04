@@ -37,8 +37,8 @@ export function faceDirection(dir: FacingDir, nav: OpenOS.Navigation) {
     }
 }
 
-export function moveInDirection(dir: FacingDir, dist: number) {
-   // faceDirection(dir)
+export function moveInDirection(dir: FacingDir, dist: number, nav: OpenOS.Navigation) {
+    faceDirection(dir, nav)
     for(let i = 0; i < Math.abs(dist); i++) {
         moveForward()
     }
@@ -48,11 +48,11 @@ export function moveInDirection(dir: FacingDir, dist: number) {
  * Moves the robot dist blocks in positive X (negative X when dist < 0)
  * @param dist distance
  */
-export function moveX(dist: number) {
+export function moveX(dist: number, nav: OpenOS.Navigation) {
     if(dist < 0) {  
-        moveInDirection(FacingDir.East, dist)
+        moveInDirection(FacingDir.East, dist, nav)
     } else {
-        moveInDirection(FacingDir.West, dist)
+        moveInDirection(FacingDir.West, dist, nav)
     }
 }
 
@@ -60,30 +60,30 @@ export function moveX(dist: number) {
  * Moves the robot dist blocks in positive Z (negative Z when dist < 0)
  * @param dist distance
  */
-export function moveZ(dist: number) {
+export function moveZ(dist: number, nav: OpenOS.Navigation) {
     if(dist < 0) {
-        moveInDirection(FacingDir.South, dist)
+        moveInDirection(FacingDir.South, dist, nav)
     } else {
-        moveInDirection(FacingDir.North, dist)
+        moveInDirection(FacingDir.North, dist, nav)
     }
 }
 
-export function moveFromTo(from: Pos2D, to: Pos2D) {
+export function moveFromTo(from: Pos2D, to: Pos2D, nav: OpenOS.Navigation) {
     print(`Moving: (${from.x}, ${from.z}) -> (${to.x}, ${to.z})`)
     if(from.z === to.z) {
         const dist = to.x - from.x;
         print("dist = " + dist)
-        moveZ(dist)
+        moveZ(dist, nav)
     } else if (from.x === to.x) {
         const dist = to.z - from.z;
         print("dist = " + dist)
-        moveX(dist)
+        moveX(dist, nav)
     } else {
         error("Tried to move diagonally")
     }
 }
 
-export function walkPath(path: Path, nodeGraph: NodeGraph) {
+export function walkPath(path: Path, nodeGraph: NodeGraph, nav: OpenOS.Navigation) {
     print("Walking Path with size " + path.length)
     for(let i = 0; i < path.length-1; i++) {
         const from = nodeGraph.get(path[i]);
@@ -91,7 +91,7 @@ export function walkPath(path: Path, nodeGraph: NodeGraph) {
 
         if(from === undefined || to === undefined) error("From or to was null")
 
-        moveFromTo(from.pos, to.pos)
+        moveFromTo(from.pos, to.pos, nav)
         os.sleep(0.5)
     }
 }

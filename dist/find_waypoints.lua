@@ -44,5 +44,5 @@ __TS__ArrayForEach(
     end
 )
 local path = wl:russianMan(start, ____end, graph)
-controller:walkPath(path, graph)
+controller:walkPath(path, graph, nav)
 return ____exports
