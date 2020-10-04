@@ -10,7 +10,7 @@ function ____exports.getPos(self, nav)
     local p = {
         nav.getPosition()
     }
-    return {x = p[1], y = p[2], z = p[3]}
+    return {x = p[1] - 0.5, y = p[2] - 0.5, z = p[3] - 0.5}
 end
 function ____exports.getWaypoints(self, waypointLabels, nav, waypointRange)
     if waypointRange == nil then

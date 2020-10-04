@@ -77,7 +77,7 @@ export const length = (r: Rectangle): number =>
  */
 export function getPos(nav: OpenOS.Navigation): Pos3D {
     const p = [...nav.getPosition()];
-    return { x: p[0], y: p[1], z: p[2] };
+    return { x: p[0]-0.5, y: p[1]-0.5, z: p[2]-0.5 };
 }
 
 /**
