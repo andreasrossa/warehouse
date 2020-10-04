@@ -33,5 +33,5 @@ while (true) {
 		continue;
 	}
 
-	controller.moveFromTo(pos, moveTo)
+	controller.moveFromTo(pos, moveTo)	
 }

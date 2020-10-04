@@ -26,12 +26,9 @@ while (true) {
     const e = event.pull("modem_message");
     const msg: RobotMoveEvent = serialization.unserialize(e[4]);
     const pos: wh.Pos2D = wh.getPos(nav);
-	const moveTo = msg.moveTo;
-	
+    const moveTo = msg.moveTo;
     if (!wh.positionsAlign(pos, moveTo)) {
 		print("Positions do not align! Ignoring...");
 		continue;
 	}
-
-	controller.moveFromTo(pos, moveTo)
 }

@@ -21,6 +21,13 @@ const modem = component.modem;
 // Setup
 modem.open(11);
 
+function checkAlignment() {
+	if (!wh.positionsAlign(pos, moveTo)) {
+		print("Positions do not align! Ignoring...");
+		continue;
+	}
+}
+
 // Main Loop
 while (true) {
     const e = event.pull("modem_message");
@@ -28,10 +35,6 @@ while (true) {
     const pos: wh.Pos2D = wh.getPos(nav);
 	const moveTo = msg.moveTo;
 	
-    if (!wh.positionsAlign(pos, moveTo)) {
-		print("Positions do not align! Ignoring...");
-		continue;
-	}
+    
 
-	controller.moveFromTo(pos, moveTo)
 }

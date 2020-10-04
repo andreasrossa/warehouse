@@ -32,6 +32,5 @@ while (true) {
 		print("Positions do not align! Ignoring...");
 		continue;
 	}
-
-	controller.moveFromTo(pos, moveTo)
+	
 }
