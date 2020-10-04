@@ -2,21 +2,16 @@
 require("lualib_bundle");
 local ____exports = {}
 function ____exports.toGlobalPos(self, offset, globalPos)
-    local newPos = {}
-    do
-        local i = 0
-        while i < 3 do
-            newPos[i + 1] = globalPos[i + 1] + offset[i + 1]
-            i = i + 1
-        end
-    end
-    return newPos
+    return {x = globalPos.x + offset.x, y = globalPos.y + offset.y, z = globalPos.z + offset.z}
 end
-____exports.width = function(____, r) return math.abs(r.bottomRight[1] - r.bottomLeft[1]) + 1 end
-____exports.length = function(____, r) return math.abs(r.topRight[3] - r.bottomRight[3]) + 1 end
-____exports.getPos = function(____, nav) return {
-    nav.getPosition()
-} end
+____exports.width = function(____, r) return math.abs(r.bottomRight.x - r.bottomLeft.x) + 1 end
+____exports.length = function(____, r) return math.abs(r.topRight.z - r.bottomRight.z) + 1 end
+function ____exports.getPos(self, nav)
+    local p = {
+        nav.getPosition()
+    }
+    return {x = p[1], y = p[2], z = p[3]}
+end
 function ____exports.getWaypoints(self, waypointLabels, nav, waypointRange)
     if waypointRange == nil then
         waypointRange = 100
@@ -41,12 +36,23 @@ function ____exports.getWaypoints(self, waypointLabels, nav, waypointRange)
     end
     return matchingWaypoints
 end
+function ____exports.numberArrayToPos(self, arr)
+    return {x = arr[1], y = arr[2], z = arr[3]}
+end
 function ____exports.getRectangle(self, wA, wB, pos)
     return {
-        bottomRight = ____exports.toGlobalPos(nil, wA.position, pos),
-        topLeft = ____exports.toGlobalPos(nil, wB.position, pos),
-        bottomLeft = ____exports.toGlobalPos(nil, {wB.position[1], wB.position[2], wA.position[3]}, pos),
-        topRight = ____exports.toGlobalPos(nil, {wA.position[1], wA.position[2], wB.position[3]}, pos)
+        bottomRight = ____exports.toGlobalPos(
+            nil,
+            ____exports.numberArrayToPos(nil, wA.position),
+            pos
+        ),
+        topLeft = ____exports.toGlobalPos(
+            nil,
+            ____exports.numberArrayToPos(nil, wB.position),
+            pos
+        ),
+        bottomLeft = ____exports.toGlobalPos(nil, {x = wB.position[1], y = wB.position[2], z = wA.position[3]}, pos),
+        topRight = ____exports.toGlobalPos(nil, {x = wA.position[1], y = wA.position[2], z = wB.position[3]}, pos)
     }
 end
 function ____exports.scanTo3DMatrix(self, sizeX, sizeY, sizeZ, scanData)
@@ -118,18 +124,18 @@ function ____exports.scanRectangle(self, r, nav, geo)
     if (rW * rL) > 64 then
         error("Maximum volume is 64 blocks (for now)")
     end
-    if pos[2] ~= a[2] then
+    if pos.y ~= a.y then
         error("Robot and rectangle not on the same y")
     end
-    local relativeOrigin = {a[1] - pos[1], 0, a[3] - pos[3]}
+    local relativeOrigin = {x = a.x - pos.x, y = 0, z = a.z - pos.z}
     print(
-        (((((((("Scanning: w=" .. tostring(rW)) .. " l=") .. tostring(rL)) .. " - x=") .. tostring(relativeOrigin[1])) .. ", y=") .. tostring(relativeOrigin[2])) .. ", z=") .. tostring(relativeOrigin[3])
+        (((((((("Scanning: w=" .. tostring(rW)) .. " l=") .. tostring(rL)) .. " - x=") .. tostring(relativeOrigin.x)) .. ", y=") .. tostring(relativeOrigin.y)) .. ", z=") .. tostring(relativeOrigin.z)
     )
     local scanData = nil
     do
         local ____try, e = pcall(
             function()
-                scanData = geo.scan(relativeOrigin[1], relativeOrigin[3], relativeOrigin[2], rW, rL, 1)
+                scanData = geo.scan(relativeOrigin.x, relativeOrigin.z, relativeOrigin.y, rW, rL, 1)
             end
         )
         if not ____try then
@@ -138,7 +144,7 @@ function ____exports.scanRectangle(self, r, nav, geo)
     end
     if scanData == nil then
         error(
-            (((((((("Scan unsuccessful - w:" .. tostring(rW)) .. " l:") .. tostring(rL)) .. " - ") .. tostring(relativeOrigin[1])) .. ", ") .. tostring(relativeOrigin[2])) .. ", ") .. tostring(relativeOrigin[3])
+            (((((((("Scan unsuccessful - w:" .. tostring(rW)) .. " l:") .. tostring(rL)) .. " - ") .. tostring(relativeOrigin.x)) .. ", ") .. tostring(relativeOrigin.y)) .. ", ") .. tostring(relativeOrigin.z)
         )
     end
     return ____exports.scanTo3DMatrix(nil, rW, 1, rL, scanData)[1]
@@ -152,21 +158,11 @@ function ____exports.printWaypointArea(self, waypointA, waypointB, waypointRange
         nil,
         waypoints[waypointA],
         waypoints[waypointB],
-        {
-            nav.getPosition()
-        }
+        ____exports.getPos(nil, nav)
     )
     local matrix = ____exports.scanRectangle(nil, r, nav, geo)
     print(
-        (((((("Rectangle: bl=" .. tostring(
-            table.concat(r.bottomLeft, "," or ",")
-        )) .. " br=") .. tostring(
-            table.concat(r.bottomRight, "," or ",")
-        )) .. " tl=") .. tostring(
-            table.concat(r.topLeft, "," or ",")
-        )) .. " tr=") .. tostring(
-            table.concat(r.topRight, "," or ",")
-        )
+        (((((("Rectangle: bl=" .. tostring(r.bottomLeft)) .. " br=") .. tostring(r.bottomRight)) .. " tl=") .. tostring(r.topLeft)) .. " tr=") .. tostring(r.topRight)
     )
     if matrix == nil then
         return
@@ -236,6 +232,7 @@ function ____exports.nodeGraphFromNodePosMap(self, nodePositions)
     )
     return graph
 end
+____exports.positionsAlign = function(____, a, b) return (a.x == b.x) or (a.z == b.z) end
 function ____exports.reduceGraph(self, graph)
     local reduced = __TS__New(Map, graph)
     local nonReducedCount = 0

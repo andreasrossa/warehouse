@@ -16,9 +16,7 @@ local waypoints = wl:getWaypoints({aLabel, bLabel}, nav, range)
 local r = wl:getRectangle(
     waypoints[aLabel],
     waypoints[bLabel],
-    {
-        nav.getPosition()
-    }
+    wl:getPos(nav)
 )
 local matrix = wl:scanRectangle(r, nav, geo)
 local nodePositions = wl:findAirPositions(matrix)
