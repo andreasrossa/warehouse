@@ -1,5 +1,5 @@
 {
-  "name": "TypescriptToLua",
+  "name": "warehouse",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -10,9 +10,17 @@
   },
   "scripts": {
     "build": "tstl",
-    "dev": "tstl --watch"
+    "dev": "tstl --watch",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "docs": "typedoc --out docs"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
     "typescript": "^4.0.3",
     "typescript-to-lua": "^0.35.0"
   }

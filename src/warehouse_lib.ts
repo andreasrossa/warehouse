@@ -1,7 +1,3 @@
-import term = require("term");
-import serialization = require("serialization");
-import { red } from "colors";
-import { filesystemTree } from "GUI";
 
 export type Position3D = number[];
 export type Position2D = number[];
@@ -40,6 +36,11 @@ export interface GraphNode {
     neighbours: number[];
 }
 
+/**
+ * 
+ * @param offset converts a given offset (relative pos) to a global pos, relative to [[globalPos]]
+ * @param globalPos 
+ */
 export function toGlobalPos(
     offset: number[],
     globalPos: Position3D
@@ -141,7 +142,7 @@ export function scanTo3DMatrix(
     return matrix;
 }
 
-export function print3DMatrix(matrix: Matrix3D, gpu: OpenOS.GPU) {
+export function print3DMatrix(matrix: Matrix3D, gpu: OpenOS.GPU, term: any) {
     term.clear();
     const cursorOffset = [7, 7];
     for (let y = 0; y < matrix.length; y++) {
@@ -158,8 +159,6 @@ export function print3DMatrix(matrix: Matrix3D, gpu: OpenOS.GPU) {
         print("_".repeat(matrix[0][1].length));
     }
 }
-
-export function printNodeGraph(graph: PosNodeGraph) {}
 
 export function correctXZ(matrix: Matrix3D): Matrix3D {
     const newMatrix = Object.assign(matrix);
@@ -227,7 +226,8 @@ export function printWaypointArea(
     waypointRange: number = 100,
     nav: OpenOS.Navigation,
     geo: OpenOS.Geolyzer,
-    gpu: OpenOS.GPU
+    gpu: OpenOS.GPU,
+    term: any
 ) {
     const waypoints = getWaypoints([waypointA, waypointB], nav, waypointRange);
     const r = getRectangle(
@@ -244,7 +244,7 @@ export function printWaypointArea(
 
     if (matrix == null) return;
 
-    print3DMatrix([matrix], gpu);
+    print3DMatrix([matrix], gpu, term);
 }
 
 export function comparePos(a: Pos2D, b: Pos2D): boolean {

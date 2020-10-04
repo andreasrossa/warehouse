@@ -1,6 +1,7 @@
 import component = require("component")
 import controller = require("./controller")
 import * as wl from "./warehouse_lib"
+import term = require("term")
 const parsedArgs = [...args];
 
 const aLabel = parsedArgs[0]!!;
@@ -9,7 +10,7 @@ const start = tonumber(parsedArgs[2])!!;
 const end = tonumber(parsedArgs[3])!!;
 const range = tonumber(parsedArgs[4]) || 100;
 
-const nav = component.navigation;
+const nav = component.navigation
 const geo = component.geolyzer;
 
 const waypoints = wl.getWaypoints([aLabel, bLabel], nav, range);

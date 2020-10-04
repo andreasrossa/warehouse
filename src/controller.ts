@@ -1,9 +1,8 @@
 import robot = require("robot")
 import component = require("component")
 import sides = require("sides")
+import "./navigation"
 import { NodeGraph, nodeGraphFromPositions, NodeID, Path, Pos2D } from "./warehouse_lib";
-
-const nav = component.navigation;
 
 export enum FacingDir {
     North = 0,
@@ -12,7 +11,7 @@ export enum FacingDir {
     West = 270
 }
 
-export function currentFacingDir(): FacingDir {
+export function currentFacingDir(nav: OpenOS.Navigation): FacingDir {
     const facing = nav.getFacing()
     switch(facing) {
         case sides.front: return FacingDir.North;
@@ -24,9 +23,9 @@ export function currentFacingDir(): FacingDir {
     return -1
 }
 
-export function faceDirection(dir: FacingDir) {
+export function faceDirection(dir: FacingDir, nav: OpenOS.Navigation) {
     print("Facing: " + dir.toString())
-    const facing = currentFacingDir()
+    const facing = currentFacingDir(nav)
     let rotation = dir - facing;
     if(rotation < 0) {
         for(let i = 0; i <= Math.abs(rotation); i += 90) {
